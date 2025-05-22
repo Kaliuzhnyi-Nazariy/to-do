@@ -1,0 +1,33 @@
+@import url("https://fonts.googleapis.com/css2?family=Jaro:opsz@6..72&display=swap");
+@import "tailwindcss";
+
+:root {
+  --authbgc: #c99cdb;
+  --text: #ffffff;
+  --appbgc: #e8daef;
+  --darkerpurple: #8e44ad;
+  --darkpurple: #6b3083;
+
+  --todobgc: #5cace1;
+  --darkertodobg: #1d7cbb;
+  --todobtn: #cfe5f3;
+
+  --progressbgc: #f7dc6f;
+  --darkertodobg: #d9bb41;
+  --progressbtn: #e0d39f;
+
+  --donebgc: #72de9f;
+  --darkerdone: #45c97d;
+
+  --markcolor: #e94447;
+
+  --errbg: #f07d7fd9;
+
+  --btnforcancel: #dc34e2;
+}
+
+body {
+  font-family: "Jaro", sans-serif;
+  color: var(--text);
+  font-size: 20px;
+}
