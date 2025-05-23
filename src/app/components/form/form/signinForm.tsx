@@ -6,6 +6,9 @@ import Link from "next/link";
 import Button from "../button";
 import InputField from "../inputField";
 import { signinValidationSchema } from "./validation";
+import { useAppDispatch } from "@/app/hooks/useAppDispatch";
+import { signin } from "@/app/redux/auth/operations";
+import { useRouter } from "next/navigation";
 
 export default function SigninForm() {
   const values: ISigninForm = {
@@ -13,12 +16,21 @@ export default function SigninForm() {
     password: "",
   };
 
+  const router = useRouter();
+
+  const dispatch = useAppDispatch();
+
   return (
     <div className="w-full flex flex-col items-center">
       <Formik
         initialValues={values}
         validationSchema={signinValidationSchema}
-        onSubmit={(val) => console.log(val)}
+        onSubmit={async (val) => {
+          const res = await dispatch(signin(val));
+          if (res.payload?.token) {
+            router.push("/todo");
+          }
+        }}
       >
         <Form className="flex flex-col justify-between px-10">
           {/* <div className="mt-[25px]">
