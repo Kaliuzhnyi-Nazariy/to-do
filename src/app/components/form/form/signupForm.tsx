@@ -34,11 +34,13 @@ export default function SignUpForm() {
           }
         }}
       >
-        <Form className="md:w-[440px] 2xl:w-[460px] h-[450px] md:h-[700px] 2xl:h-[900px] overflow-y-scroll overflow-x-hidden">
-          <InputField name="name" type="text" />
-          <InputField name="email" type="email" />
-          <InputField name="password" type="password" />
-          <InputField name="confirmPassword" type="password" />
+        <Form className="md:w-[440px] 2xl:w-[460px] 2xl:h-[920px]  overflow-hidden">
+          <div className="h-[400px] md:h-[700px] overflow-y-scroll">
+            <InputField name="name" type="text" />
+            <InputField name="email" type="email" />
+            <InputField name="password" type="password" />
+            <InputField name="confirmPassword" type="password" />
+          </div>
           <div className="w-[240px] md:w-full flex justify-center">
             <Button signup={true}>Sign up</Button>
           </div>

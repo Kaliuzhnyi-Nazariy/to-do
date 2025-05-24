@@ -13,7 +13,7 @@ export default function SignUp() {
           alt="schedule and planner"
           width={420}
           height={740}
-          className="hidden 2xl:block 2xl:row-start-1 2xl:row-end-2 w-[420px] 2xl:h-[740px] object-fill"
+          className="hidden 2xl:block 2xl:row-start-1 2xl:row-end-2 w-[420px] 2xl:h-[740px] object-fill justify-self-center align-middle"
         />
 
         <div className=" 2xl:col-start-2 2xl:h-[740px]">
