@@ -1,4 +1,4 @@
-import { signin, signup } from "./operations";
+import { logout, signin, signup } from "./operations";
 import { AuthInitialState, IUser } from "./typesOrInterfaces";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
@@ -49,7 +49,15 @@ const authSlice = createSlice({
           state.name = action.payload.name;
         }
       )
-      .addCase(signin.rejected, handleError);
+      .addCase(signin.rejected, handleError)
+      .addCase(logout.pending, handleLoading)
+      .addCase(logout.fulfilled, (state: AuthInitialState) => {
+        state.isLoading = false;
+        state._id = "";
+        state.email = "";
+        state.name = "";
+      })
+      .addCase(logout.rejected, handleError);
   },
 });
 

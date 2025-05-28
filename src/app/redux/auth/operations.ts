@@ -27,10 +27,19 @@ export const signin = createAsyncThunk<
 >("auth/signin", async (data, { rejectWithValue }) => {
   try {
     const res = await axiosInstance.post("/auth/signin", data);
-
     return res.data;
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (error: any) {
     return rejectWithValue(error.response?.data || "Signin failed");
   }
+});
+
+export const logout = createAsyncThunk<
+  unknown,
+  void, // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  { rejectValue: any }
+>("auth/logout", async () => {
+  const res = await axiosInstance.post("/auth/logout");
+  console.log(res.data);
+  return res.data;
 });
