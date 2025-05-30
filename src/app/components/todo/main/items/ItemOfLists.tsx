@@ -7,7 +7,7 @@ import { useAppDispatch } from "@/app/hooks/useAppDispatch";
 import { useEffect } from "react";
 import { getTodo } from "@/app/redux/todo/operations";
 import { IToDoReceived, updateTodo } from "@/app/redux/todo/typesOrInterfaces";
-import ItemOfAccordion from "./ItemOfAccordion";
+import TaskItem from "./TaskItem";
 
 const ItemOfLists = ({
   title,
@@ -110,7 +110,7 @@ const ItemOfLists = ({
           </Typography>
         </AccordionSummary>
         <AccordionDetails
-          className="w-[300px] px-0 h-[200px]"
+          className="w-[300px] px-0 h-[200px] overflow-x-hidden"
           sx={{
             padding: "10px",
             overflowY: "scroll",
@@ -121,7 +121,7 @@ const ItemOfLists = ({
             {tasks.length != 0 ? (
               tasks.map((task) => {
                 return (
-                  <ItemOfAccordion
+                  <TaskItem
                     liColor={bgc.header}
                     btnColor={bgc.btncolor}
                     key={task._id}
