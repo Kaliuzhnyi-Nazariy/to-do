@@ -34,6 +34,7 @@ export interface updateTodo {
   title: string;
   description?: string;
   date: string | Date;
+  status?: string;
 }
 
 export interface updateTodoRequest {
