@@ -42,7 +42,9 @@ export default function SignUpForm() {
             <InputField name="confirmPassword" type="password" />
           </div>
           <div className="w-[240px] md:w-full flex justify-center">
-            <Button signup={true}>Sign up</Button>
+            <Button signup={true} additionalStyles=" md:h-[84px]">
+              Sign up
+            </Button>
           </div>
         </Form>
       </Formik>

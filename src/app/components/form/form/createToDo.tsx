@@ -17,7 +17,7 @@ export const CreateToDo = ({ onClose }: { onClose: () => void }) => {
 
   return (
     <div className="flex h-full flex-col justify-center items-center">
-      <h2 className="text-[24px]">Create to-do</h2>
+      <h2 className="text-2xl md:text-5xl">Create to-do</h2>
       <Formik
         initialValues={initialValue}
         validationSchema={createToDoValidation}
@@ -26,11 +26,18 @@ export const CreateToDo = ({ onClose }: { onClose: () => void }) => {
           onClose();
         }}
       >
-        <Form>
-          <InputField name="title" type="text" />
-          <InputField name="description" type="text" />
-          <InputField name="date" type="date" />
-          <Button signup={false}>Create</Button>
+        <Form className="md:w-[440px] md:flex md:flex-col">
+          <InputField name="title" type="text" additionalStyles="md:h-[50px]" />
+          <InputField
+            name="description"
+            type="text"
+            isTextarea={true}
+            additionalStyles="md:h-[150px]"
+          />
+          <InputField name="date" type="date" additionalStyles="md:h-[50px]" />
+          <Button signup={false} additionalStyles=" h-[65px] self-center">
+            Create
+          </Button>
         </Form>
       </Formik>
     </div>

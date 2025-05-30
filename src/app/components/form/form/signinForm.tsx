@@ -36,7 +36,11 @@ export default function SigninForm() {
           <InputField name="email" type="email" />
           <InputField name="password" type="password" />
           <div className="flex w-full justify-center">
-            <Button type="submit" signup={false}>
+            <Button
+              type="submit"
+              signup={false}
+              additionalStyles=" md:h-[84px]"
+            >
               Sign in
             </Button>
           </div>

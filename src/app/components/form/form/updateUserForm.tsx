@@ -27,7 +27,7 @@ export const UpdateUserData = ({
 
   return (
     <div className="flex h-full flex-col justify-center items-center">
-      <h2 className="text-[24px]">Update to-do</h2>
+      <h2 className="text-[24px] md:text-[48px]">Update user</h2>
       <Formik
         initialValues={initialValue}
         validationSchema={updUserValidation}
@@ -36,11 +36,13 @@ export const UpdateUserData = ({
           onClose();
         }}
       >
-        <Form>
+        <Form className="md:w-[440px] md:flex md:flex-col">
           <InputField name="name" type="text" />
           <InputField name="email" type="email" />
           <InputField name="password" type="password" />
-          <Button signup={false}>Create</Button>
+          <Button signup={false} additionalStyles=" h-[65px] self-center">
+            Update
+          </Button>
         </Form>
       </Formik>
     </div>
