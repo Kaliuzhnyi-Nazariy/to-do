@@ -31,9 +31,9 @@ const customStyles: Styles = {
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
     padding: 20,
-    width: "calc(100vw - 48px)",
-    // maxHeight: "calc(100vh - 24px)",
-    height: "520px",
+    // width: "calc(100vw - 48px)",
+    // // maxHeight: "calc(100vh - 24px)",
+    // height: "520px",
     backgroundColor: "var(--authbgc)",
     border: "transparent",
   },
@@ -52,7 +52,9 @@ export const ModalBase = ({
       style={customStyles}
       contentLabel={label}
     >
-      {children}
+      <div className="h-[520px] w-[calc(100vw-48px)] md:h-[650px] md:w-[720px] ">
+        {children}
+      </div>
     </ReactModal>
   );
 };
