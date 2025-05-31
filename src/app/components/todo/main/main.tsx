@@ -48,7 +48,7 @@ export default function MainPage() {
   };
 
   return (
-    <div className="bg-[var(--appbgc)] h-[calc(100%-110px)] md:flex md:flex-col md:items-center overflow-x-hidden">
+    <div className="bg-[var(--appbgc)] h-[calc(100%-110px)] md:flex md:flex-col md:items-center overflow-x-hidden md:h-[calc(100%-200px)] 2xl:h-[calc(100%-210px)]">
       <List
         allToDoList={allToDoList}
         allProgressList={allProgressList}

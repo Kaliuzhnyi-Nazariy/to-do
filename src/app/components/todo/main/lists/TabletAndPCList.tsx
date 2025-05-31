@@ -20,7 +20,7 @@ const TabletAndPCList = ({
   handleOpenCreateModal,
 }: Prop) => {
   return (
-    <ul className="hidden flex-col gap-[15px] pt-[15px] pb-[15px] items-center h-full overflow-hidden w-[680px] md:flex">
+    <ul className="hidden flex-col gap-[15px] pt-[15px] pb-[15px] items-center h-full overflow-hidden w-[680px] md:flex 2xl:flex-row 2xl:gap-[100px] px-[50px] 2xl:w-full 2xl:justify-center">
       <TabletAndPCItem
         title="to-do"
         tasks={allToDoList}

@@ -25,7 +25,7 @@ const TaskItem = ({
 
   return (
     <li
-      className="pl-5 w-[280px] min-h-[40px] rounded-[25px] flex flex-row justify-between relative md:w-[590px] md:min-h-[70px]"
+      className="pl-5 w-[280px] min-h-[40px] rounded-[25px] flex flex-row justify-between relative md:w-[590px] md:min-h-[70px] 2xl:w-[330px]"
       style={{ backgroundColor: liColor }}
       onClick={() => {
         setData({
@@ -38,17 +38,17 @@ const TaskItem = ({
         handleOpenModal();
       }}
     >
-      <div className="w-[80%]">
-        <h2 className="text-[16px] w-[90%] whitespace-nowrap overflow-hidden text-ellipsis md:text-[24px]">
+      <div className="w-[80%] 2xl:w-[70%]">
+        <h2 className="text-[16px] w-[70%] whitespace-nowrap overflow-hidden text-ellipsis md:text-[24px]">
           {task.title}
         </h2>
-        <p className="text-[12px] w-[90%] whitespace-nowrap overflow-hidden text-ellipsis md:text-[16px]">
+        <p className="text-[12px] w-[70%] whitespace-nowrap overflow-hidden text-ellipsis md:text-[16px]">
           {task.description || ""}
         </p>
       </div>
       {task.status !== "done" ? (
         <button
-          className="w-[50px] h-[40px] rounded-tr-[25px] rounded-br-[25px] md:h-[70px] md:w-[125px] md:text-[36px] font-bold"
+          className="w-[50px] h-[40px] rounded-tr-[25px] rounded-br-[25px] md:h-[70px] md:w-[125px] md:text-[36px] font-bold 2xl:w-[70px]"
           style={{ backgroundColor: btnColor }}
           onClick={async (e: React.MouseEvent<HTMLElement>) => {
             e.stopPropagation();
