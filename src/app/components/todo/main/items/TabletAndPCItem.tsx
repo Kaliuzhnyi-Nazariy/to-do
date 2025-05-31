@@ -54,26 +54,27 @@ const TabletAndPCItem = ({
   return (
     <div
       style={{ backgroundColor: bgc.main }}
-      className="h-[250px] w-[680px] overflow-y-hidden relative"
+      className="h-[250px] w-[680px] overflow-y-hidden relative 2xl:w-[380px] 2xl:h-[465px]"
     >
       <div
-        className="flex text-[36px] h-[70px] justify-center "
+        className="flex text-[36px] h-[70px] justify-center 2xl:h-[65px]"
         style={{ backgroundColor: bgc.header }}
       >
-        <h3 className="uppercase w-[680px] flex items-center justify-center">
+        <h3 className="uppercase w-[680px] flex items-center justify-center 2xl:w-[360px]">
           {title}
         </h3>
-        <button
-          className="absolute right-[15px] top-0 h-[70px] w-[70px] cursor-pointer"
-          onClick={() => handleOpenCreateModal()}
-        >
-          +
-        </button>
+        {title === "to-do" ? (
+          <button
+            className="absolute right-[15px] top-0 h-[70px] w-[70px] cursor-pointer 2xl:h-[65px]"
+            onClick={() => handleOpenCreateModal()}
+          >
+            +
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
-      <ul
-        className="flex flex-col gap-[15px] text-white p-[10px] overflow-y-scroll md:px-[44px] md:py-5 overflow-x-hidden"
-        style={{ height: "calc(100% - 70px)" }}
-      >
+      <ul className="flex flex-col gap-[15px] text-white p-[10px] overflow-y-auto md:px-[44px] md:py-5 overflow-x-hidden h-[calc(100%-70px)] 2xl:h-[calc(100%-65px)] 2xl:px-[25px]">
         {tasks.length != 0 ? (
           tasks.map((task) => {
             return (
