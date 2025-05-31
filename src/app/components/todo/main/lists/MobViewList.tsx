@@ -19,7 +19,7 @@ const MobViewList = ({
   handleOpenCreateModal,
 }: Prop) => {
   return (
-    <ul className="flex flex-col gap-[15px] pt-[15px] pb-[15px] items-center h-full overflow-y-scroll md:hidden overflow-x-hidden">
+    <ul className="flex flex-col gap-[15px] pt-[15px] pb-[15px] items-center h-full overflow-y-auto md:hidden overflow-x-hidden">
       <ItemOfLists
         title="to-do"
         tasks={allToDoList}
