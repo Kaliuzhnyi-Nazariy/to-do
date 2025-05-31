@@ -16,7 +16,7 @@ export default function InputField({
   isTextarea?: boolean;
 }) {
   return (
-    <div className="mt-[15px] w-[240px] md:mt-5">
+    <div className="mt-[15px] w-[240px] md:mt-5 max-md:min-h-[80px]">
       <HeaderField>{name}: </HeaderField>
 
       <Field
