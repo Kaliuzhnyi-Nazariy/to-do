@@ -35,16 +35,14 @@ export default function SignUpForm() {
         }}
       >
         <Form className="md:w-[440px] 2xl:w-[460px] 2xl:h-[920px]  overflow-hidden">
-          <div className="h-[400px] md:h-[700px] overflow-y-scroll">
+          <div className="h-[400px] md:h-[700px] overflow-y-auto">
             <InputField name="name" type="text" />
             <InputField name="email" type="email" />
             <InputField name="password" type="password" />
             <InputField name="confirmPassword" type="password" />
           </div>
           <div className="w-[240px] md:w-full flex justify-center">
-            <Button signup={true} additionalStyles=" md:h-[84px]">
-              Sign up
-            </Button>
+            <Button additionalStyles="md:h-[84px]">Sign up</Button>
           </div>
         </Form>
       </Formik>

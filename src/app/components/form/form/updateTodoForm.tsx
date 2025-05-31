@@ -55,7 +55,7 @@ export const UpdateToDoForm = ({
             name="description"
             type="text"
             isDisabled={isDisabled}
-            additionalStyles="md:h-[150px]"
+            additionalStyles="md:h-[150px] 2xl:h-[150px]"
             isTextarea={true}
           />
           <InputField
@@ -64,10 +64,7 @@ export const UpdateToDoForm = ({
             isDisabled={isDisabled}
             additionalStyles="md:h-[50px]"
           />
-          <Button
-            signup={false}
-            additionalStyles=" md:h-[65px] md:mt-[15px] self-center"
-          >
+          <Button additionalStyles=" md:h-[65px] md:mt-[15px] self-center">
             {isDisabled ? "Already done" : "Update"}
           </Button>
         </Form>

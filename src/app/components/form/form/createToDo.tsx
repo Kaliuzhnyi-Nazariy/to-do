@@ -32,12 +32,10 @@ export const CreateToDo = ({ onClose }: { onClose: () => void }) => {
             name="description"
             type="text"
             isTextarea={true}
-            additionalStyles="md:h-[150px]"
+            additionalStyles="md:h-[150px]  2xl:h-[150px]"
           />
           <InputField name="date" type="date" additionalStyles="md:h-[50px]" />
-          <Button signup={false} additionalStyles=" h-[65px] self-center">
-            Create
-          </Button>
+          <Button additionalStyles=" md:h-[65px] self-center">Create</Button>
         </Form>
       </Formik>
     </div>

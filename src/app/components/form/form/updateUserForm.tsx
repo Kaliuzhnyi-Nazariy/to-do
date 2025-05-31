@@ -36,13 +36,11 @@ export const UpdateUserData = ({
           onClose();
         }}
       >
-        <Form className="md:w-[440px] md:flex md:flex-col">
+        <Form className="md:w-[440px] md:flex md:flex-col overflow-y-auto">
           <InputField name="name" type="text" />
           <InputField name="email" type="email" />
           <InputField name="password" type="password" />
-          <Button signup={false} additionalStyles=" h-[65px] self-center">
-            Update
-          </Button>
+          <Button additionalStyles=" md:h-[65px] self-center">Update</Button>
         </Form>
       </Formik>
     </div>
