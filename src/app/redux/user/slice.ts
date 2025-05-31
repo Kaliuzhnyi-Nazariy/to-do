@@ -1,6 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { getMe, updateUser } from "./operations";
-import { IGetUser, UserState } from "./typesORInterfaces";
+import { deleteUser, getMe, updateUser } from "./operations";
+import { IGetUser, UserState } from "./typesOrInterfaces";
 
 const initialState: UserState = {
   _id: "",
@@ -53,7 +53,12 @@ const userSlice = createSlice({
           state.isLoading = false;
         }
       )
-      .addCase(updateUser.rejected, handleReject),
+      .addCase(updateUser.rejected, handleReject)
+      .addCase(deleteUser.pending, handleLoading)
+      .addCase(deleteUser.fulfilled, () => {
+        return initialState;
+      })
+      .addCase(deleteUser.rejected, handleReject),
 });
 
 export const userReducer = userSlice.reducer;
