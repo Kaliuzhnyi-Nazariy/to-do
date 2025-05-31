@@ -40,30 +40,6 @@ const List = ({
         handleOpenModal={handleOpenModal}
         handleOpenCreateModal={handleOpenCreateModal}
       />
-
-      {/* <ul className="flex flex-col gap-[15px] pt-[15px] pb-[15px] items-center h-full overflow-y-scroll w-[680px]">
-        <TabletAndPCItem
-          title="to-do"
-          tasks={allToDoList}
-          setData={setData}
-          handleOpenModal={handleOpenModal}
-          handleOpenCreateModal={handleOpenCreateModal}
-        />
-        <TabletAndPCItem
-          title="progress"
-          tasks={allProgressList}
-          setData={setData}
-          handleOpenModal={handleOpenModal}
-          handleOpenCreateModal={handleOpenCreateModal}
-        />
-        <TabletAndPCItem
-          title="done"
-          tasks={allDoneList}
-          setData={setData}
-          handleOpenModal={handleOpenModal}
-          handleOpenCreateModal={handleOpenCreateModal}
-        />
-      </ul> */}
     </>
   );
 };
