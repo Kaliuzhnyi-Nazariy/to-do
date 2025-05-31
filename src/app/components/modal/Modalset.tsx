@@ -8,6 +8,7 @@ interface ModalArg {
   onClose: () => void;
   label?: string;
   children: React.ReactNode;
+  isDel?: boolean;
 }
 
 const customStyles: Styles = {
@@ -30,11 +31,11 @@ const customStyles: Styles = {
     bottom: "auto",
     marginRight: "-50%",
     transform: "translate(-50%, -50%)",
-    padding: 20,
+    padding: 0,
     // width: "calc(100vw - 48px)",
     // // maxHeight: "calc(100vh - 24px)",
     // height: "520px",
-    backgroundColor: "var(--authbgc)",
+    // backgroundColor: "var(--authbgc)",
     border: "transparent",
   },
 };
@@ -44,7 +45,11 @@ export const ModalBase = ({
   onClose,
   label = "",
   children,
+  isDel = false,
 }: ModalArg) => {
+  const styles = isDel
+    ? "bg-[var(--darkpurple)] h-[200px] w-[calc(100vw-48px)] md:h-[300px] md:w-[720px] 2xl:w-[800px] "
+    : "bg-[var(--authbgc)] h-[520px] w-[calc(100vw-48px)] md:h-[650px] md:w-[720px] ";
   return (
     <ReactModal
       isOpen={isOpen}
@@ -52,9 +57,7 @@ export const ModalBase = ({
       style={customStyles}
       contentLabel={label}
     >
-      <div className="h-[520px] w-[calc(100vw-48px)] md:h-[650px] md:w-[720px] ">
-        {children}
-      </div>
+      <div className={styles}>{children}</div>
     </ReactModal>
   );
 };
