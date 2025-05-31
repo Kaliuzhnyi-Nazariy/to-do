@@ -68,7 +68,8 @@ const todoSlice = createSlice({
             (t) => t._id === action.payload._id
           );
           if (changeId !== -1) {
-            state.todo.splice(changeId, 1, action.payload);
+            state.todo.splice(changeId, 1);
+            state.todo.push(action.payload);
           }
         }
       )
