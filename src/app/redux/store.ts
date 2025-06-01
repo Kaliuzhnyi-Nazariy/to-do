@@ -15,7 +15,7 @@ import {
   REHYDRATE,
 } from "redux-persist";
 import { userReducer } from "./user/slice";
-import { UserState } from "./user/typesORInterfaces";
+import { UserState } from "./user/typesOrInterfaces";
 export interface IStore {
   auth: AuthInitialState;
   todo: TodoState;
