@@ -7,6 +7,8 @@ import InputField from "../inputField";
 import Button from "../button";
 import { useAppDispatch } from "@/app/hooks/useAppDispatch";
 import { updateToDo } from "@/app/redux/todo/operations";
+import { useSelector } from "react-redux";
+import { todoLoading } from "@/app/redux/todo/selectors";
 
 export const UpdateToDoForm = ({
   data,
@@ -17,21 +19,16 @@ export const UpdateToDoForm = ({
   onClose: () => void;
   isDisabled?: boolean;
 }) => {
-  // console.log(new Date(data.date).toISOString().split("T")[0]);
-
-  // console.log(data);
-
   const initialValue: updateTodo = {
     _id: data._id,
     title: data.title || "",
     description: data.description || "",
     date: new Date(data.date).toISOString().split("T")[0] || "",
-    // date: "",
   };
 
-  // console.log(new Date(data.date).toISOString());
-
   const dispatch = useAppDispatch();
+
+  const isLoading = useSelector(todoLoading);
 
   return (
     <div className="flex h-full flex-col justify-center items-center">
@@ -64,9 +61,16 @@ export const UpdateToDoForm = ({
             isDisabled={isDisabled}
             additionalStyles="md:h-[50px]"
           />
-          <Button additionalStyles=" md:h-[65px] md:mt-[15px] self-center">
-            {isDisabled ? "Already done" : "Update"}
-          </Button>
+          <div className="w-full flex justify-center">
+            <Button
+              additionalStyles=" w-full mt-10 md:h-[65px] md:mt-[15px] self-center"
+              isDisabled={isDisabled}
+            >
+              {isLoading
+                ? "Loading..."
+                : `${isDisabled ? "Already done" : "Update"}`}
+            </Button>
+          </div>
         </Form>
       </Formik>
     </div>
