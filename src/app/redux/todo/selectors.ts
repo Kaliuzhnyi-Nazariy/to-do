@@ -6,3 +6,4 @@ export const todosProgress = (state: IStore) =>
   state.todo.todo.filter((t) => t.status === "progress");
 export const todosDone = (state: IStore) =>
   state.todo.todo.filter((t) => t.status === "done");
+export const todoLoading = (state: IStore) => state.todo.isLoading;
