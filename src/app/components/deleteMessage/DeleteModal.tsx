@@ -5,6 +5,8 @@ import Button from "../form/button";
 import { useAppDispatch } from "@/app/hooks/useAppDispatch";
 import { deleteUser } from "@/app/redux/user/operations";
 import { useRouter } from "next/navigation";
+import { useSelector } from "react-redux";
+import { userLoading } from "@/app/redux/user/selectors";
 
 const DeleteModal = ({
   handleCloseModal,
@@ -13,6 +15,8 @@ const DeleteModal = ({
 }) => {
   const dispatch = useAppDispatch();
   const router = useRouter();
+
+  const isLoading = useSelector(userLoading);
 
   return (
     <div className="h-[200px] w-full text-center flex flex-col justify-center md:h-[300px]">
@@ -30,7 +34,7 @@ const DeleteModal = ({
             router.push("/auth/signup");
           }}
         >
-          Delete
+          {isLoading ? "Loading..." : "Delete"}
         </Button>
         <Button
           delModal={true}
