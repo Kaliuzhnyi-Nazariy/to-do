@@ -8,8 +8,9 @@ import { useEffect, useRef, useState } from "react";
 import { UpdateUserData } from "../../form/form/updateUserForm";
 import { getMe } from "@/app/redux/user/operations";
 import { useSelector } from "react-redux";
-import { email, username } from "@/app/redux/user/selectors";
+import { email, userLoading, username } from "@/app/redux/user/selectors";
 import DeleteModal from "../../deleteMessage/DeleteModal";
+import { authLoading } from "@/app/redux/auth/selectors";
 
 export default function Dropdown() {
   const dispatch = useAppDispatch();
@@ -44,6 +45,9 @@ export default function Dropdown() {
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [isMenuClicked, setMenuClicked] = useState(false);
 
+  const isLoading = useSelector(userLoading);
+  const isAuthLoading = useSelector(authLoading);
+
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
@@ -77,7 +81,7 @@ export default function Dropdown() {
           setMenuClicked(!isMenuClicked);
         }}
       >
-        <p>{userName}</p> <p>▼</p>
+        <p>{isLoading ? "Loading..." : userName}</p> <p>▼</p>
       </button>
       {showdropdown ? (
         <ul className="w-[150px] h-[90px] bg-[var(--darkpurple)] absolute top-[30px] right-[11px] z-2 md:w-[180px] md:h-[120px] md:top-[50px] md:right-[-50px]">
@@ -94,7 +98,7 @@ export default function Dropdown() {
               router.push("/auth/signin");
             }}
           >
-            <button>Log out</button>
+            <button>{isAuthLoading ? "Loading..." : "Log out"}</button>
           </li>
           <li
             className="px-[10px] active:text-[var(--darkpurple)] active:bg-white hover:text-[var(--darkpurple)] hover:bg-white md:h-10 md:flex md:items-center"

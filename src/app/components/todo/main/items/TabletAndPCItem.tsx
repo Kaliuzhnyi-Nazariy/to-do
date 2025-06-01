@@ -3,6 +3,8 @@ import { getTodo } from "@/app/redux/todo/operations";
 import { IToDoReceived, updateTodo } from "@/app/redux/todo/typesOrInterfaces";
 import React, { useEffect } from "react";
 import TaskItem from "./TaskItem";
+import { useSelector } from "react-redux";
+import { todoLoading } from "@/app/redux/todo/selectors";
 
 interface Prop {
   title: string;
@@ -51,6 +53,8 @@ const TabletAndPCItem = ({
       bgc.btncolor = "green";
   }
 
+  const isLoading = useSelector(todoLoading);
+
   return (
     <div
       style={{ backgroundColor: bgc.main }}
@@ -74,26 +78,30 @@ const TabletAndPCItem = ({
           <></>
         )}
       </div>
-      <ul className="flex flex-col gap-[15px] text-white p-[10px] overflow-y-auto md:px-[44px] md:py-5 overflow-x-hidden h-[calc(100%-70px)] 2xl:h-[calc(100%-65px)] 2xl:px-[25px]">
-        {tasks.length != 0 ? (
-          tasks.map((task) => {
-            return (
-              <TaskItem
-                liColor={bgc.header}
-                btnColor={bgc.btncolor}
-                key={task._id}
-                task={task}
-                handleOpenModal={handleOpenModal}
-                setData={setData}
-              />
-            );
-          })
-        ) : (
-          <li>
-            <div className="">No tasks</div>
-          </li>
-        )}
-      </ul>
+      {isLoading ? (
+        "Loading..."
+      ) : (
+        <ul className="flex flex-col gap-[15px] text-white p-[10px] overflow-y-auto md:px-[44px] md:py-5 overflow-x-hidden h-[calc(100%-70px)] 2xl:h-[calc(100%-65px)] 2xl:px-[25px]">
+          {tasks.length != 0 ? (
+            tasks.map((task) => {
+              return (
+                <TaskItem
+                  liColor={bgc.header}
+                  btnColor={bgc.btncolor}
+                  key={task._id}
+                  task={task}
+                  handleOpenModal={handleOpenModal}
+                  setData={setData}
+                />
+              );
+            })
+          ) : (
+            <li>
+              <div className="">No tasks</div>
+            </li>
+          )}
+        </ul>
+      )}
     </div>
   );
 };

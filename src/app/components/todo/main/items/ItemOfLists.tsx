@@ -8,6 +8,8 @@ import { useEffect } from "react";
 import { getTodo } from "@/app/redux/todo/operations";
 import { IToDoReceived, updateTodo } from "@/app/redux/todo/typesOrInterfaces";
 import TaskItem from "./TaskItem";
+import { useSelector } from "react-redux";
+import { todoLoading } from "@/app/redux/todo/selectors";
 
 const ItemOfLists = ({
   title,
@@ -53,6 +55,8 @@ const ItemOfLists = ({
       bgc.header = "green";
       bgc.btncolor = "green";
   }
+
+  const isLoading = useSelector(todoLoading);
 
   return (
     <li>
@@ -117,10 +121,12 @@ const ItemOfLists = ({
             bgcolor: bgc.main,
           }}
         >
-          <ul className="flex flex-col gap-[15px] text-white">
-            {tasks.length != 0 ? (
-              tasks.map((task) => {
-                return (
+          {isLoading ? (
+            <div className="text-white">Loading...</div>
+          ) : (
+            <ul className="flex flex-col gap-[15px] text-white">
+              {tasks.length !== 0 ? (
+                tasks.map((task) => (
                   <TaskItem
                     liColor={bgc.header}
                     btnColor={bgc.btncolor}
@@ -129,27 +135,23 @@ const ItemOfLists = ({
                     handleOpenModal={handleOpenModal}
                     setData={setData}
                   />
-                );
-              })
-            ) : (
-              <li>
-                <div className="">No tasks</div>
-              </li>
-            )}
+                ))
+              ) : (
+                <li>
+                  <div>{isLoading ? "Loading..." : "No tasks"}</div>
+                </li>
+              )}
 
-            {title === "to-do" ? (
-              <li
-                className="border-[1px] border-dashed border-[var(--darkertodobg)] w-[280px] h-[40px] rounded-[25px] flex flex-row justify-center items-center text-center "
-                onClick={() => {
-                  handleOpenCreateModal();
-                }}
-              >
-                + Add to-do
-              </li>
-            ) : (
-              <></>
-            )}
-          </ul>
+              {title === "to-do" && (
+                <li
+                  className="border-[1px] border-dashed border-[var(--darkertodobg)] w-[280px] h-[40px] rounded-[25px] flex flex-row justify-center items-center text-center"
+                  onClick={handleOpenCreateModal}
+                >
+                  + Add to-do
+                </li>
+              )}
+            </ul>
+          )}
         </AccordionDetails>
       </Accordion>
     </li>

@@ -5,7 +5,7 @@ import Dropdown from "./dropdown";
 import { useAppDispatch } from "@/app/hooks/useAppDispatch";
 import { getMe } from "@/app/redux/user/operations";
 import { useSelector } from "react-redux";
-import { allTasks } from "@/app/redux/user/selectors";
+import { allTasks, userLoading } from "@/app/redux/user/selectors";
 
 export default function ToDoHeader() {
   const dispatch = useAppDispatch();
@@ -15,6 +15,7 @@ export default function ToDoHeader() {
   }, [dispatch]);
 
   const allTasksValue = useSelector(allTasks);
+  const isLoading = useSelector(userLoading);
 
   return (
     <header className="h-[60px] w-full grid grid-cols-2 grid-rows-2 bg-[var(--darkerpurple)] px-[15px] md:h-[120px] md:flex md:flex-col md:items-center justify-center md:relevant 2xl:flex-row 2xl:justify-between">
@@ -22,7 +23,7 @@ export default function ToDoHeader() {
         MY TO-DO PLANNER
       </h1>
       <p className="grid row-start-2 text-[12px] self-center md:text-[20px] 2xl:mr-[290px] 2xl:text-[32px]">
-        all tasks amount - {allTasksValue}
+        all tasks amount - {isLoading ? "loading..." : allTasksValue}
       </p>
 
       <Dropdown />
