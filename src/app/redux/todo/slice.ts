@@ -9,7 +9,7 @@ const initialState: TodoState = {
 };
 
 const handleLoading = (state: TodoState) => {
-  state.isLoading = false;
+  state.isLoading = true;
   state.error = null;
 };
 
