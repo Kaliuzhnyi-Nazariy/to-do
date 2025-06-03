@@ -16,11 +16,12 @@ const handleLoading = (state: { isLoading: boolean; error: string | null }) => {
 };
 
 const handleError = (
-  state: { isLoading: boolean; error: string | null },
+  state: { isLoading: boolean; error: string | null; isLoggedIn: boolean },
   action: PayloadAction<{ error: string }>
 ) => {
   state.isLoading = false;
   state.error = action.payload?.error || "Something went wrong!";
+  state.isLoggedIn = false;
 };
 
 const authSlice = createSlice({
