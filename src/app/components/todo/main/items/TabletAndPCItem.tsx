@@ -1,7 +1,4 @@
-import { useAppDispatch } from "@/app/hooks/useAppDispatch";
-import { getTodo } from "@/app/redux/todo/operations";
 import { IToDoReceived, updateTodo } from "@/app/redux/todo/typesOrInterfaces";
-import React, { useEffect } from "react";
 import TaskItem from "./TaskItem";
 import { useSelector } from "react-redux";
 import { todoLoading } from "@/app/redux/todo/selectors";
@@ -21,12 +18,6 @@ const TabletAndPCItem = ({
   handleOpenModal,
   handleOpenCreateModal,
 }: Prop) => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getTodo());
-  }, [dispatch]);
-
   const bgc = { header: "#1d7cbb", main: "#5cace1", btncolor: "#cfe5f3" };
 
   switch (title) {

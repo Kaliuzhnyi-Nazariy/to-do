@@ -3,9 +3,6 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import Typography from "@mui/material/Typography";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import { useAppDispatch } from "@/app/hooks/useAppDispatch";
-import { useEffect } from "react";
-import { getTodo } from "@/app/redux/todo/operations";
 import { IToDoReceived, updateTodo } from "@/app/redux/todo/typesOrInterfaces";
 import TaskItem from "./TaskItem";
 import { useSelector } from "react-redux";
@@ -24,12 +21,6 @@ const ItemOfLists = ({
   handleOpenModal: () => void;
   handleOpenCreateModal: () => void;
 }) => {
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(getTodo());
-  }, [dispatch]);
-
   const bgc = { header: "#1d7cbb", main: "#5cace1", btncolor: "#cfe5f3" };
 
   switch (title) {
