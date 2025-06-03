@@ -13,7 +13,7 @@ const LoggedInLayout = ({ children }: { children: React.ReactNode }) => {
     if (isLoggedInStatus) {
       return route.push("/todo");
     } else {
-      return route.push("/auth/signin");
+      return route.replace("/");
     }
   }, [isLoggedInStatus, route]);
 
