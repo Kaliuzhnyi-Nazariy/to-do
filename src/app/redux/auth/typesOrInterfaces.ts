@@ -4,6 +4,7 @@ export interface AuthInitialState {
   name: string;
   isLoading: boolean;
   error: string | null;
+  isLoggedIn: boolean;
 }
 
 export interface IUser {

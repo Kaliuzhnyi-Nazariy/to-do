@@ -7,6 +7,7 @@ export const store: AuthInitialState = {
   name: "",
   isLoading: false,
   error: null,
+  isLoggedIn: false,
 };
 
 const handleLoading = (state: { isLoading: boolean; error: string | null }) => {
@@ -36,6 +37,7 @@ const authSlice = createSlice({
           state._id = action.payload._id;
           state.email = action.payload.email;
           state.name = action.payload.name;
+          state.isLoggedIn = true;
         }
       )
       .addCase(signup.rejected, handleError)
@@ -47,6 +49,7 @@ const authSlice = createSlice({
           state._id = action.payload._id;
           state.email = action.payload.email;
           state.name = action.payload.name;
+          state.isLoggedIn = true;
         }
       )
       .addCase(signin.rejected, handleError)
@@ -56,6 +59,7 @@ const authSlice = createSlice({
         state._id = "";
         state.email = "";
         state.name = "";
+        state.isLoggedIn = false;
       })
       .addCase(logout.rejected, handleError);
   },

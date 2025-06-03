@@ -25,7 +25,7 @@ export interface IStore {
 const authPersistedReducer = {
   key: "auth",
   storage,
-  whitelist: ["token"],
+  whitelist: ["token", "isLoggedIn"],
 };
 
 const persistedAuth = persistReducer(authPersistedReducer, authReducer);
