@@ -7,6 +7,7 @@ import InputField from "../inputField";
 import Button from "../button";
 import { useSelector } from "react-redux";
 import { todoLoading } from "@/app/redux/todo/selectors";
+import { toast } from "react-toastify";
 
 export const CreateToDo = ({ onClose }: { onClose: () => void }) => {
   const dispatch = useAppDispatch();
@@ -26,7 +27,12 @@ export const CreateToDo = ({ onClose }: { onClose: () => void }) => {
         initialValues={initialValue}
         validationSchema={createToDoValidation}
         onSubmit={async (val) => {
-          await dispatch(postTodo({ ...val, endTime: val.date }));
+          const res = await dispatch(postTodo({ ...val, endTime: val.date }));
+          if (res.payload._id) {
+            toast.success("To-do is updated!", { theme: "colored" });
+          } else {
+            toast.error(res.payload, { theme: "colored" });
+          }
           onClose();
         }}
       >

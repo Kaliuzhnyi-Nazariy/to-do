@@ -2,6 +2,7 @@ import { useAppDispatch } from "@/app/hooks/useAppDispatch";
 import { updateStatus } from "@/app/redux/todo/operations";
 import { IToDoReceived, updateTodo } from "@/app/redux/todo/typesOrInterfaces";
 import React from "react";
+import { toast } from "react-toastify";
 
 const TaskItem = ({
   liColor,
@@ -53,9 +54,14 @@ const TaskItem = ({
           onClick={async (e: React.MouseEvent<HTMLElement>) => {
             e.stopPropagation();
             console.log(task);
-            await dispatch(
+            const res = await dispatch(
               updateStatus({ id: task._id, status: statusToChange })
             );
+            if (res.payload._id) {
+              toast.success("To-do is updated!", { theme: "colored" });
+            } else {
+              toast.error(res.payload, { theme: "colored" });
+            }
           }}
         >
           ✓

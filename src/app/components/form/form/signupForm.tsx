@@ -13,6 +13,7 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { authLoading } from "@/app/redux/auth/selectors";
+import { toast } from "react-toastify";
 
 export default function SignUpForm() {
   const value: ISignupForm = {
@@ -39,7 +40,13 @@ export default function SignUpForm() {
         onSubmit={async (val) => {
           const res = await dispatch(signup(val));
           if (res.payload?.token) {
+            toast.success(`Welcome ${res.payload.name}`, {
+              theme: "colored",
+            });
+
             router.push("/todo");
+          } else {
+            toast.error(res.payload);
           }
         }}
       >

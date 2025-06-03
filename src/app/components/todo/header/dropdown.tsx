@@ -11,6 +11,7 @@ import { useSelector } from "react-redux";
 import { email, userLoading, username } from "@/app/redux/user/selectors";
 import DeleteModal from "../../deleteMessage/DeleteModal";
 import { authLoading } from "@/app/redux/auth/selectors";
+import { toast } from "react-toastify";
 
 export default function Dropdown() {
   const dispatch = useAppDispatch();
@@ -94,7 +95,12 @@ export default function Dropdown() {
           <li
             className="px-[10px] active:text-[var(--darkpurple)] active:bg-white hover:text-[var(--darkpurple)] hover:bg-white md:h-10 md:flex md:items-center"
             onClick={async () => {
-              await dispatch(logout());
+              const res = await dispatch(logout());
+              if (res.type === "auth/logout/fulfilled") {
+                toast.success("You are logged out!", { theme: "colored" });
+              } else {
+                toast.error("Something went wrong", { theme: "colored" });
+              }
               router.push("/auth/signin");
             }}
           >

@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { authLoading } from "@/app/redux/auth/selectors";
 import React, { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function SigninForm() {
   const values: ISigninForm = {
@@ -35,7 +36,15 @@ export default function SigninForm() {
         onSubmit={async (val) => {
           const res = await dispatch(signin(val));
           if (res.payload?.token) {
+            toast.success(`Welcome ${res.payload.name}`, {
+              theme: "colored",
+            });
+
             router.push("/todo");
+          } else {
+            toast.error(res.payload, {
+              theme: "colored",
+            });
           }
         }}
       >

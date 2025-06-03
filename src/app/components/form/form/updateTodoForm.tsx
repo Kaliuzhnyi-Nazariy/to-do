@@ -9,6 +9,7 @@ import { useAppDispatch } from "@/app/hooks/useAppDispatch";
 import { updateToDo } from "@/app/redux/todo/operations";
 import { useSelector } from "react-redux";
 import { todoLoading } from "@/app/redux/todo/selectors";
+import { toast } from "react-toastify";
 
 export const UpdateToDoForm = ({
   data,
@@ -37,7 +38,12 @@ export const UpdateToDoForm = ({
         initialValues={initialValue}
         validationSchema={createToDoValidation}
         onSubmit={async (val) => {
-          await dispatch(updateToDo({ ...val, endTime: val.date }));
+          const res = await dispatch(updateToDo({ ...val, endTime: val.date }));
+          if (res.payload._id) {
+            toast.success("To-do is updated!", { theme: "colored" });
+          } else {
+            toast.error(res.payload, { theme: "colored" });
+          }
           onClose();
         }}
       >

@@ -7,6 +7,7 @@ import { deleteUser } from "@/app/redux/user/operations";
 import { useRouter } from "next/navigation";
 import { useSelector } from "react-redux";
 import { userLoading } from "@/app/redux/user/selectors";
+import { toast } from "react-toastify";
 
 const DeleteModal = ({
   handleCloseModal,
@@ -29,7 +30,13 @@ const DeleteModal = ({
           delModal={true}
           additionalStyles="text-[16px] bg-[var(--markcolor)] w-[90px] h-[30px] md:w-[250px] md:h-[60px]"
           onClick={async () => {
-            dispatch(deleteUser());
+            const res = await dispatch(deleteUser());
+
+            if (res.type === "user/logout/fulfilled") {
+              toast.success("Your account is deleted!", { theme: "colored" });
+            } else {
+              toast.error("Something went wrong", { theme: "colored" });
+            }
             handleCloseModal();
             router.push("/auth/signup");
           }}

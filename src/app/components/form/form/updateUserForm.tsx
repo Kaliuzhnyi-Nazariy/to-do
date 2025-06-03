@@ -10,6 +10,7 @@ import { useAppDispatch } from "@/app/hooks/useAppDispatch";
 import { useSelector } from "react-redux";
 import { userLoading } from "@/app/redux/user/selectors";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export const UpdateUserData = ({
   username,
@@ -39,7 +40,12 @@ export const UpdateUserData = ({
         initialValues={initialValue}
         validationSchema={updUserValidation}
         onSubmit={async (val) => {
-          await dispatch(updateUser(val));
+          const res = await dispatch(updateUser(val));
+          if (res.payload._id) {
+            toast.success("User data updated", { theme: "colored" });
+          } else {
+            toast.error(res.payload, { theme: "colored" });
+          }
           onClose();
         }}
       >
